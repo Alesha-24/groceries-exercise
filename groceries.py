@@ -21,4 +21,12 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
+
+print("--------------")
+print("THERE ARE ", len(products), "PRODUCTS:")
+print("--------------:")
+
+for x in products:
+    print("+ ", x["name"], " ($", x["price"], ")")
+
+
