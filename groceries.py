@@ -20,6 +20,7 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+import operator
 
 def to_usd(my_price):
     return f"${my_price:,.2f}" 
@@ -28,7 +29,33 @@ print("--------------")
 print("THERE ARE ", len(products), "PRODUCTS:")
 print("--------------:")
 
-sorted_products = sorted(prodcuts, key=operator.itemgetter("name"))
+sorted_products = sorted(products, key=operator.itemgetter("name"))
 
 for x in sorted_products:
-    print("+ ", x["name"], to_usd(x["price"])
+    print("+ ", x["name"], to_usd(x["price"]))
+
+print("--------------")
+print("THERE ARE ", len("department"), "DEPARTMENTS:")
+print("--------------:")
+
+departments = []
+
+for x in products:
+    if x["department"] not in departments:
+        departments.append(x["department"])
+
+sorted_dept= sorted(departments)
+
+for d in sorted_dept:
+    department_count = [p for p in products if p["department"] == d]
+    product_count = len(department_count)
+    if len(department_count) >1: 
+        label = "products"
+    else:
+        label = "product"
+    print("+ ", d.title() , " (", product_count," ", label, ")") 
+
+
+
+
+
